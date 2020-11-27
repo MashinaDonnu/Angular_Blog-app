@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Create post</h1>
+    <div class="form-control" [ngClass]="{invalid: form.get('title').touched && form.get('title').invalid}" >
+        <label for="title">Title:</label>
+        <input type="text" id="title" placeholder="post title" formControlName="title">
+        <div class="validation" *ngIf="form.get('title').touched && form.get('title').invalid">
+            <small>Enter post title!</small>
+        </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('text').touched && form.get('text').invalid}">
+        <label>Text:</label>
+<!--        <input type="text" id="text" placeholder="post text" formControlName="text">-->
+        <quill-editor formControlName="text"></quill-editor>
+        <div class="validation" *ngIf="form.get('text').touched && form.get('text').invalid">
+            <small>Enter post text!</small>
+        </div>
+    </div>
+    <div class="form-control" [ngClass]="{invalid: form.get('author').touched && form.get('author').invalid}">
+        <label for="author">Text:</label>
+        <input type="text" id="author" placeholder="author" formControlName="author">
+        <div class="validation" *ngIf="form.get('author').touched && form.get('author').invalid">
+            <small>Enter author name!</small>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-dark btn-block" [disabled]="form.invalid">Create post</button>
+</form>

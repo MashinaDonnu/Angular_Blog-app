@@ -1,0 +1,7 @@
+<div class="posts" *ngIf="posts$ | async as posts; else loading">
+    <app-post *ngFor="let post of posts" [post]="post"></app-post>
+</div>
+
+<ng-template #loading>
+    <h4 class="text-center">Load posts...</h4>
+</ng-template>
